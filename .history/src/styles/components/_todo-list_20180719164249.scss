@@ -1,0 +1,10 @@
+.todos {
+    border: $grey-border;
+    width: 100%;
+    header {
+        padding: $l-size $s-size $s-size;
+        font-size: $xl-size;
+        border-bottom: $grey-border
+    }
+}
+

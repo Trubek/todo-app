@@ -1,0 +1,23 @@
+// Add Todo
+.add-todo {
+    display: flex;
+    flex-direction: column;
+    padding: $m-size;
+}
+
+.add-todo__input {
+    border: none;
+    border-bottom: .2rem solid darken($green, 10%);
+    flex-grow: 1;
+    margin: 0 $s-size 0 0;
+    padding: $s-size;
+}
+
+@media (min-width: $breakpoint-desktop) {
+    .add-todo {
+        flex-direction: row-reverse;
+    }
+    .add-todo__input {
+        margin: 0 $s-size 0 0;
+    }
+}

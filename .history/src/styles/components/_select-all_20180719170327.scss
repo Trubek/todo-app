@@ -1,0 +1,18 @@
+.select-all {
+    margin-right: auto;
+    padding: $m-size 0;
+    input {
+        margin-right: 10px;
+    }
+    [type="checkbox"]:not(:checked) + label:after,
+    [type="checkbox"]:checked + label:after {
+        content: '✔';
+        position: absolute;
+        top: .2em; left: .275em;
+        font-size: 1.4em;
+        line-height: 0.8;
+        color: #09ad7e;
+        transition: all .2s;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+}
