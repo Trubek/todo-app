@@ -9,6 +9,7 @@ export default class TodoApp extends React.Component {
 
     state = {
         todoList: [],
+        allChecked: undefined,
         save: {}
     }
 
@@ -82,6 +83,7 @@ export default class TodoApp extends React.Component {
                 <TodoList
                     todoList={this.state.todoList}
                     removeTodo={this.removeTodoHandler}
+                    isChecked={this.state.allChecked}
                 />
                 <SaveButton saveList={this.saveList}/>
             </div>

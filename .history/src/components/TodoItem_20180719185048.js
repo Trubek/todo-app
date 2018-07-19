@@ -4,6 +4,8 @@ const TodoItem = (props) => (
     <div className='todo-item'>
         <input 
         type='checkbox'
+        checked={props.isChecked}
+        disabled
         />{props.todoText}
         <button 
             className='garbage'

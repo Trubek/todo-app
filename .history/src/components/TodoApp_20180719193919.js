@@ -9,6 +9,7 @@ export default class TodoApp extends React.Component {
 
     state = {
         todoList: [],
+        allChecked: undefined,
         save: {}
     }
 
@@ -53,6 +54,7 @@ export default class TodoApp extends React.Component {
     }
 
     selectAllHandler = (e) => {
+        console.log(e.target.checked)
         let switcher = e.target.checked
         const inputsList = document.querySelectorAll('.todo-list div input');
         for(let i = 0; i < inputsList.length; i++) {
@@ -82,6 +84,7 @@ export default class TodoApp extends React.Component {
                 <TodoList
                     todoList={this.state.todoList}
                     removeTodo={this.removeTodoHandler}
+                    isChecked={this.state.allChecked}
                 />
                 <SaveButton saveList={this.saveList}/>
             </div>

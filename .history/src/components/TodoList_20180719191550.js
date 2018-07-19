@@ -11,7 +11,9 @@ const TodoList = (props) => (
                     key={index}
                     index={index}
                     todoText={todo}
+                    isChecked={props.isChecked}
                     removeItem={props.removeTodo}
+                    singleChecked={props.singleChecked}
                 />
             )}
         </div>
