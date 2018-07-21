@@ -1,10 +1,15 @@
 import React from 'react';
 
 const TodoItem = (props) => (
-    <div className='todo-item'>
-        <input 
-        type='checkbox'
-        />{props.todoText}
+    <div className='todos-item'>
+        <label className='box'>
+            <input 
+                type='checkbox'
+                className='checkbox-input'
+            />
+            {props.todoText}
+            <span className='checkmark'></span>
+        </label>
         <button 
             className='garbage'
             onClick={() => props.removeItem(props.index)}

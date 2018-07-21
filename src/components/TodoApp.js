@@ -22,20 +22,22 @@ export default class TodoApp extends React.Component {
 
         const nodeListDivs = document.querySelector('.todo-list').childNodes;
         const nodeListInputs = document.querySelectorAll('.todo-list div input')
-        for(let i=0; i < nodeListDivs.length; i++) { nodeListDivs[i].setAttribute("style", "display: flex;")}
 
-        if(value !== 'all') {
-            for(let i=0; i < nodeListDivs.length; i++) {
-                    
-                if(value === 'completed') {
-                    if(!nodeListInputs[i].checked) nodeListDivs[i].setAttribute("style", "display: none;");
+        // reset - set display flex to all attributes
+        for (let i = 0; i < nodeListDivs.length; i++) { nodeListDivs[i].setAttribute("style", "display: flex;") }
+
+        if (value !== 'all') {
+            for (let i = 0; i < nodeListDivs.length; i++) {
+
+                if (value === 'completed') {
+                    if (!nodeListInputs[i].checked) nodeListDivs[i].setAttribute("style", "display: none;");
                 }
                 else {
-                    if(nodeListInputs[i].checked) nodeListDivs[i].setAttribute("style", "display: none;");
+                    if (nodeListInputs[i].checked) nodeListDivs[i].setAttribute("style", "display: none;");
                 }
-                }
+            }
         } else {
-            for(let i=0; i < nodeListDivs.length; i++) { nodeListDivs[i].setAttribute("style", "display: flex;")}
+            for (let i = 0; i < nodeListDivs.length; i++) { nodeListDivs[i].setAttribute("style", "display: flex;") }
         }
     }
 
@@ -47,28 +49,27 @@ export default class TodoApp extends React.Component {
         })
     }
 
+    selectAllHandler = (e) => {
+        let switcher = e.target.checked
+        const inputsList = document.querySelectorAll('.todo-list div input');
+        for (let i = 0; i < inputsList.length; i++) {
+            document.querySelectorAll('.todo-list div input')[i].checked = switcher;
+        }
+    }
+
     saveList = () => {
         const json = JSON.stringify(this.state.todoList);
         localStorage.setItem("todoList", json);
     }
 
-    selectAllHandler = (e) => {
-        let switcher = e.target.checked
-        const inputsList = document.querySelectorAll('.todo-list div input');
-        for(let i = 0; i < inputsList.length; i++) {
-            document.querySelectorAll('.todo-list div input')[i].checked = switcher;
-        }
-    }
 
-
-    
     componentDidMount() {
         try {
             const json = JSON.parse(localStorage.getItem("todoList"));
             if (json) {
-                    this.setState(() => ({todoList: json}));
+                this.setState(() => ({ todoList: json }));
             }
-        } catch(e) {
+        } catch (e) {
             // Do nothing
         }
     }
@@ -77,13 +78,13 @@ export default class TodoApp extends React.Component {
         return (
             <div className='container'>
                 <AddTodo addTodo={this.addTodoHandler} />
-                <Filter filterList={this.filterHandler}/>
+                <Filter filterList={this.filterHandler} />
                 <SelectAll selectAll={this.selectAllHandler} />
                 <TodoList
                     todoList={this.state.todoList}
                     removeTodo={this.removeTodoHandler}
                 />
-                <SaveButton saveList={this.saveList}/>
+                <SaveButton saveList={this.saveList} />
             </div>
         )
     }
